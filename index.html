@@ -34,29 +34,27 @@
                
             
                 
-                    <span ng-show="show">
-                      <form name="inputForm" class="form-group" ng-controller="FormController as autoctrl" 
+                   <span ng-show="show">
+                <form name="inputForm" class="form-group" ng-controller="FormController as autoctrl" 
                       ng-submit="inputForm.$valid && autoctrl.addGegevens(gegeven)" novalidate>
-                        <br>
-                        
-                        <p> Type: <input type="text" name="autoctrl.type" ng-model="type" style="margin-left:52px; padding-left:5px;  width:165px;" minlength="2" maxlength="10" required /></p>
-                        <p>Bouwjaar: <input type="number" name="bouwjaar" ng-model="autoctrl.bouwjaar"  style="margin-left:22px; padding-left:5px;  width:165px;" minlength="4" maxlength="4" required /></p>
-                         <p>Km: <input type="number" name="km" ng-model="autoctrl.km" style="margin-left:60px; padding-left:5px;  width:165px;" minlength="2" maxlength="6" required /></p>
-                        <p>Brandstof:  <input id="select" name="brandstof" ng-model="autoctrl.brandstof" style="margin-left:20px; padding-left:5px;" minlength="3" maxlength="7" required/></p>
-           
-                        <p>Kenteken: <input type="text" name="kenteken" ng-model="autoctrl.kenteken" style="margin-left:22px; padding-left:5px; width:165px;" minlength="6" maxlength="9" required /></p>
-                        <p>Datum:         <input type="text" name="datum" ng-model="autoctrl.datum"  style="margin-left:40px; padding-left:5px;  width:165px;" minlength="3" maxlength="11" required  /></p>
-                        <p>checked: <input type="checkbox"  name="checked" ng-model="autoctrl.checked" style="margin-left:28px;" required /></p>
-                        <br>
-                        <button class="btn btn-primary" type="submit" value="submit">Toevoegen</button>
-                        
-                        <div>{{inputForm.$valid}}</div>
-                        {{ PostDataResponse }} 
-                        {{autoctrl.gegeven.type}}
-                        {{autoctrl.gegeven.bouwjaar}}
-                       
-                    </form>
-                    </span>
+                    <br>
+
+                    <p> Type: <input type="text" name="autoctrl.type" ng-model="autoctrl.gegevens.type" style="margin-left:52px; padding-left:5px;  width:165px;" minlength="2" maxlength="10" required /></p>
+                    <p>Bouwjaar: <input type="number" name="bouwjaar" ng-model="autoctrl.gegevens.bouwjaar"  style="margin-left:22px; padding-left:5px;  width:165px;" minlength="4" maxlength="4" required /></p>
+                    <p>Km: <input type="number" name="km" ng-model="autoctrl.gegevens.km" style="margin-left:60px; padding-left:5px;  width:165px;" minlength="2" maxlength="6" required /></p>
+                    <p>Brandstof:  <input id="select" name="brandstof" ng-model="autoctrl.gegevens.brandstof" style="margin-left:20px; padding-left:5px;" minlength="3" maxlength="7" required/></p>
+
+                    <p>Kenteken: <input type="text" name="kenteken" ng-model="autoctrl.gegevens.kenteken" style="margin-left:22px; padding-left:5px; width:165px;" minlength="6" maxlength="9" required /></p>
+                    <p>Datum:         <input type="text" name="datum" ng-model="autoctrl.gegevens.datum"  style="margin-left:40px; padding-left:5px;  width:165px;" minlength="3" maxlength="11" required  /></p>
+                    <p>checked: <input type="checkbox"  name="checked" ng-model="autoctrl.gegevens.checked" style="margin-left:28px;" required /></p>
+                    <br>
+                    <button class="btn btn-primary" type="submit" value="submit">Toevoegen</button>
+
+                    <div>{{inputForm.$valid}}</div>
+                   
+
+                </form>
+            </span>
 
 
                     
@@ -101,10 +99,7 @@
                     </table>
                     
                     
-                          <div class="form-group">
-                              <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
-                            
-                          </div>
+                  
                 
                 </div>
             </div>
