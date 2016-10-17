@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="volkswagenapp">
+<head>
+    <meta charset="UTF-8">
+    <title>VW Custom</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="custom.css" />
+    <script type="text/javascript" src="angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<div ng-controller="VolkswagenCtrl as vw">
+   
+          <div class="container">
+            <div class="row">
+                      <div class="col-md-3">
+                       <img src="images/volkswagen.jpeg" />
+                      </div>   
+                      <div class="col-md-9">
+                      <br>
+                       <h2>VW applicatie</h2>
+                 
+                         <br>
+                         <br>
+                            <!-- row in row-->
+                            <div class="col-md-6"> <button type="button" class="btn btn-primary" ng-click="show = !show" ng-init="show=false"> Nieuwe invoer</button></div>
+                            <div class="col-md-6"></div>
+
+                         </div>
+               <!-- einde row -->          
+             </div>
+
+             <br>
+               
+            
+                
+                    <span ng-show="show">
+                      <form name="inputForm" class="form-group" ng-controller="FormController as autoctrl" 
+                      ng-submit="inputForm.$valid && autoctrl.addGegevens(gegeven)" novalidate>
+                        <br>
+                        
+                        <p> Type: <input type="text" name="autoctrl.type" ng-model="type" style="margin-left:52px; padding-left:5px;  width:165px;" minlength="2" maxlength="10" required /></p>
+                        <p>Bouwjaar: <input type="number" name="bouwjaar" ng-model="autoctrl.bouwjaar"  style="margin-left:22px; padding-left:5px;  width:165px;" minlength="4" maxlength="4" required /></p>
+                         <p>Km: <input type="number" name="km" ng-model="autoctrl.km" style="margin-left:60px; padding-left:5px;  width:165px;" minlength="2" maxlength="6" required /></p>
+                        <p>Brandstof:  <input id="select" name="brandstof" ng-model="autoctrl.brandstof" style="margin-left:20px; padding-left:5px;" minlength="3" maxlength="7" required/></p>
+           
+                        <p>Kenteken: <input type="text" name="kenteken" ng-model="autoctrl.kenteken" style="margin-left:22px; padding-left:5px; width:165px;" minlength="6" maxlength="9" required /></p>
+                        <p>Datum:         <input type="text" name="datum" ng-model="autoctrl.datum"  style="margin-left:40px; padding-left:5px;  width:165px;" minlength="3" maxlength="11" required  /></p>
+                        <p>checked: <input type="checkbox"  name="checked" ng-model="autoctrl.checked" style="margin-left:28px;" required /></p>
+                        <br>
+                        <button class="btn btn-primary" type="submit" value="submit">Toevoegen</button>
+                        
+                        <div>{{inputForm.$valid}}</div>
+                        {{ PostDataResponse }} 
+                        {{autoctrl.gegeven.type}}
+                        {{autoctrl.gegeven.bouwjaar}}
+                       
+                    </form>
+                    </span>
+
+
+                    
+
+
+                   <hr />
+                    
+                    <div class="form-group">
+                        <label>Zoek op kenteken: <input class="form-control" type="text" ng-model="search.kenteken" placeholder="  AA  -  BB   -  CC  " minlength="6" maxlength="9" /></label><br/>
+                    </div>
+                    
+                    
+                    
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            
+                            <th>Type</th>
+                            <th>Bouwjaar</th>
+                            <th>km</th>
+                            <th>brandstof</th>
+                            <th>Kenteken</th>
+                            <th>Datum</th>
+                            <th>Checked</th>
+                            
+                            
+                        </tr>
+                        <!--<tr ng-repeat="auto in autos | filter:search:strict | limitTo:10 ">-->
+                         <tr ng-repeat="gegeven in vw.gegevens | filter:search:strict | orderBy:'type' ">  
+                            
+                            <td>{{gegeven.type}}</td>
+                            <td>{{gegeven.bouwjaar}}</td>
+                            <td>{{gegeven.km}}</td>
+                            <td>{{gegeven.brandstof}}</td>
+                            <td>{{gegeven.kenteken}}</td>
+                            <td>{{gegeven.datum | date}}</td>
+                            <td>{{gegeven.checked}}</td>
+                            
+                            
+                            
+                        </tr>
+                    </table>
+                    
+                    
+                          <div class="form-group">
+                              <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+                            
+                          </div>
+                
+                </div>
+            </div>
+     
+    
+</body>
+</html>
